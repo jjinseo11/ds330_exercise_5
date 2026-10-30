@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <!-- grab D3 library -->
+    <script src="https://cdn.jsdelivr.net/npm/d3@6"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@observablehq/plot@0.1"></script>
+    <!-- grab D3 AdjacencyMatrixLayout. While local, this is from https://bl.ocks.org/micahstubbs/7f360cc66abfa28b400b96bc75b8984e -->
+    <script src="adjacencyMatrixLayout.js"></script>
+</head>
+<body>
+    <!-- This div will contain big header and controls-->
+    <div>
+        <h3>Graph Visualization dashboard</h3>
+        <!-- This form lets the user select a graph to visualize -->
+        <form id="theForm">
+              <label for="graphInput">Select a graph:</label>
+              <select name="graphInputs" id="graphInput">
+                <option value="test.json">Test</option>
+                <option value="miserables.json">Les Miserables</option>
+                <option value="huck.json">Huckleberry Finn</option>
+                <option value="david.json">David Copperfield</option>
+                <option value="anna.json">Anna Karenina</option>
+                <option value="homer.json">The Iliad</option>
+              </select>
+        </form>
+    </div>
+    
+    <!-- This div will contain the graph embedding-->
+    <div class="graphContainer">
+        <h4>Graph embedding</h4>
+        <!-- several sliders to change things about the graph -->
+        <label for="centerForceSlider">Centering force:</label>
+        <input id= "centerForceSlider" name="centerForceSlider" type=range min=.001 max=1.5 step=.001>
+        <label for="chargeForceSlider">Charge force:</label>
+        <input id= "chargeForceSlider" name="chargeForceSlider" type=range min=-800 max=1 step=1>
+        <label for="circleSizeslider">Circle size:</label>
+        <input id= "circleSizeslider" name="chargeForceSlider" type=range min=1 max=15 step=1>
+            
+        <svg class="embedding" id="svgEmbedding" width="1500" height="1000"></svg>
+    </div>
+    <script src="embedding.js"></script>
+    
+    <div class="matrixContainer">
+        <h4>Adjacency Matrix</h4>
+        <svg class="adjacencyMatrix" id="svgAdjacencyMatrix" width="1500" height="1500"></svg>
+    </div>
+    <!-- This script is lightly adapted from https://bl.ocks.org/micahstubbs/7f360cc66abfa28b400b96bc75b8984e -->
+    <script src="adjacencyMatrix.js"></script>
+</body>
